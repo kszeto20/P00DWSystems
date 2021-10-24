@@ -29,3 +29,22 @@ void print_list(struct song_info *first) {
     first = first->next;
   }
 }
+struct song_info * randoRet (struct song_info * toFree) {
+  struct song_info *front = toFree;
+  int count = 0;
+  while(toFree != NULL) {
+    count += 1;
+    toFree = toFree -> next;
+
+  }
+
+  toFree = front;
+  srand(time(NULL));
+  int x = (rand() % count);
+  //printf("%d", x);
+
+  for (int i = 0; i < x; i++) {
+    toFree = toFree->next;
+  }
+  return toFree;
+}

@@ -27,6 +27,8 @@ struct song_info * remove_node(struct song_info *front, int data);
 // free the entire list
 struct song_info * free_list(struct song_info * toFree);
 
+// Return a pointer to random element in the list.
+struct song_info * randoRet (struct song_info * toFree);
 /*
 
 insert nodes in order
