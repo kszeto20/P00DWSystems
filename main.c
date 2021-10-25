@@ -71,13 +71,22 @@ int main () {
 
   printf("%s", sep);
 
+  //print_list(addedIn);
   printf("Testing find node\n");
-  struct song_info *nodeFound = find_node(addedIn, "Kendrick Lamar", "DNA");
-  print_node(nodeFound);
+  struct song_info *nodeFound = find_node(addedIn, "DNA", "Kendrick Lamar");
 
   printf("%s", sep);
 
-  printf("Testing find node\n");
+  printf("Testing find artist\n");
   find_artist(addedIn, "Kendrick Lamar");
+  printf("%s", sep);
 
+  printf("Testing removing song\n");
+  printf("The first node in the list: ");
+  print_node(addedIn);
+  addedIn = remove_song(addedIn, "DNA", "Kendrick Lamar");
+  printf("\n%sFinal List\n", sep);
+  print_list(addedIn);
+
+  return 0;
 }

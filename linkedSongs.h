@@ -38,10 +38,14 @@ struct song_info * free_list(struct song_info * toFree);
 struct song_info * random_song (struct song_info * toFree);
 
 // find by artist then name
-int data_check(struct song_info *a, char *artist, char *name);
-struct song_info * find_node(struct song_info *front, char *artist, char *name);
+int data_check(struct song_info *a, char *name, char *artist);
+struct song_info * find_node(struct song_info *front, char *name, char *artist);
 
 struct song_info * find_artist(struct song_info *front, char *artist);
+
+struct song_info * remove_song(struct song_info *front, char *name, char *artist);
+
+
 /*
 remove a single specified node from the list
 specified by both artist and song name.

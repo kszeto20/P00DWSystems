@@ -98,7 +98,7 @@ struct song_info * random_song (struct song_info * toFree) {
 }
 
 // Returns true if node contains given data
-int data_check(struct song_info *a, char *artist, char *name) {
+int data_check(struct song_info *a, char *name, char *artist) {
   if (strcasecmp(a->artist, artist) == 0) {
     if (strcasecmp(a->name, name) == 0) {
       return 1;
@@ -108,11 +108,11 @@ int data_check(struct song_info *a, char *artist, char *name) {
 }
 
 // finds a given node in the list
-struct song_info * find_node(struct song_info *front, char *artist, char *name) {
+struct song_info * find_node(struct song_info *front, char *name, char *artist) {
     printf("Looking for %s by %s\n", name, artist);
     struct song_info *temp = front;
     while (temp) {
-        if (data_check(temp, artist, name)) {
+        if (data_check(temp, name, artist)) {
           printf("Song Found: ");
           print_node(temp);
           printf("\n");
@@ -139,6 +139,27 @@ struct song_info * find_artist(struct song_info *front, char *artist) {
   printf("\nartist not found\n");
   return NULL;
 }
+struct song_info * remove_song(struct song_info *front, char *name, char *artist) {
+  printf("Removing: %s by %s", name, artist);
+  if (data_check(front, name, artist)) {
+    front = front->next;
+  }
+  struct song_info *before = front;
+  struct song_info *temp = front->next;
+  while (temp) {
+    if (data_check(temp, name, artist)) {
+      before->next = temp->next;
+      return front;
+    }
+    else {
+      before = before->next;
+      temp = temp->next;
+    }
+  }
+  printf("Song not found");
+  return front;
+}
+
 
 void print_node(struct song_info * p) {
   printf("The song is %s by %s\n", p->name, p->artist);
