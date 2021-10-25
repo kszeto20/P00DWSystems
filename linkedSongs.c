@@ -57,12 +57,15 @@ struct song_info * insert_song (struct song_info *front, char *a, char *n) {
   if (front == NULL) {
     return toAdd;
   }
+  // songcmp returns 0 or 1 or -1  -> pos equal insert to left
   if (songcmp(front, toAdd)) {
     toAdd->next = front;
     return toAdd;
   }
+  // need to check where insertion is going on + where insertion is actually adding
   struct song_info *before = front;
   struct song_info *curr = front->next;
+  // need before + curr ???????
   while (curr) {
     if (songcmp(curr, toAdd)) {
       toAdd->next = curr;
