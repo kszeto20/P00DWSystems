@@ -139,6 +139,7 @@ struct song_info * find_artist(struct song_info *front, char *artist) {
   printf("\nartist not found\n");
   return NULL;
 }
+
 struct song_info * remove_song(struct song_info *front, char *name, char *artist) {
   printf("Removing: %s by %s", name, artist);
   if (data_check(front, name, artist)) {
@@ -162,7 +163,7 @@ struct song_info * remove_song(struct song_info *front, char *name, char *artist
 
 
 void print_node(struct song_info * p) {
-  printf("The song is %s by %s\n", p->name, p->artist);
+  printf("{%s, %s}\t\n", p->artist, p->name);
 }
 
 void print_list(struct song_info *first) {
