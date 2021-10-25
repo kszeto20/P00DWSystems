@@ -1,4 +1,5 @@
 #include "linkedSongs.h"
+#include "library.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -85,6 +86,7 @@ int main () {
   addedIn = remove_song(addedIn, "DNA", "Kendrick Lamar");
   printf("\n%sFinal List\n", sep);
   print_list(addedIn);
+/////////////////////
 
   return 0;
 }
