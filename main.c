@@ -7,14 +7,19 @@ int main () {
   printf("Good News Everyone\n");
 
   char sep[] = "----------------------------\n";
+  printf("%s", sep);
 
-  char name[] = "DNA.";
+  printf("Testing Print Node Printing:\n");
+  char name[] = "DNA";
   char artist[] = "Kendrick Lamar";
 
   struct song_info *one = songCreation(name, artist);
-/*
   print_node(one);
+  printf("%s", sep);
 
+  //////////////////////
+
+  printf("Testing Print List:\n");
   char name2[] = "In My Feelings";
   char artist2[] = "Drake";
   struct song_info *two = insert_front(one, name2, artist2);
@@ -30,35 +35,43 @@ int main () {
   char name5[] = "DNA.";
   char artist5[] = "Kendrick Lamar";
   struct song_info *five = insert_front(four, name5, artist5);
-
-  printf("%s", sep);
-
   print_list(five);
 
   printf("%s", sep);
 
+  printf("Testing Random Node Generator\n");
   struct song_info *left = random_song(five);
   print_node(left);
 
   printf("%s", sep);
-*/
-  char name1[] = "Viva La Vida";
-  char artist1[] = "Coldplay";
-
-  char name2[] = "Light It Up";
-  char artist2[] = "Major Lazer";
-
-  char name3[] = "In My Feelings";
-  char artist3[] = "Drake";
-
-  char name4[] = "City of Stars";
-  char artist4[] = "La La Land Cast";
 
 
-  struct song_info *addedIn = insert_song(one, name1, artist1);
-  addedIn = insert_song(addedIn, name2, artist2);
-  addedIn = insert_song(addedIn, name3, artist3);
-  addedIn = insert_song(addedIn, name4, artist4);
+  char tname1[] = "Viva La Vida";
+  char tartist1[] = "Coldplay";
 
+  char tname2[] = "Light It Up";
+  char tartist2[] = "Major Lazer";
+
+  char tname3[] = "In My Feelings";
+  char tartist3[] = "Drake";
+
+  char tname4[] = "City of Stars";
+  char tartist4[] = "La La Land Cast";
+
+  char tname5[] = "Marvin's Room";
+  char tartist5[] = "Drake";
+
+
+  struct song_info *addedIn = insert_song(one, tname1, tartist1);
+  addedIn = insert_song(addedIn, tname2, tartist2);
+  addedIn = insert_song(addedIn, tname3, tartist3);
+  addedIn = insert_song(addedIn, tname4, tartist4);
+  addedIn = insert_song(addedIn, tname5, tartist5);
   print_list(addedIn);
+
+  printf("%s", sep);
+
+  printf("Testing find node\n");
+  struct song_info *nodeFound = find_node(addedIn, "Kendrick Lamar", "DNA");
+  print_node(nodeFound);
 }

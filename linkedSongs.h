@@ -12,8 +12,16 @@ struct song_info {
 //insert nodes at the front (done)
 struct song_info * insert_front(struct song_info *first,  char *name, char *artist);
 
-// make nodes (in alphabetical order to be implemented later)
+// make nodes
 struct song_info * songCreation(char *n, char *a);
+
+// compare two songs
+int comp(struct song_info *x, struct song_info *y);
+// insert helper
+struct song_info * insert (struct song_info *front, struct song_info *toComp);
+
+// add in alpha order
+struct song_info * insert_song (struct song_info *front, char *a, char *n);
 
 // print the entire list (done)
 void print_list(struct song_info *first);
@@ -33,21 +41,15 @@ struct song_info * random_song (struct song_info * toFree);
 // find by artist then name
 struct song_info * findByAN (struct song_info * toFree, char n, char a);
 
-// compare two songs
-int comp(struct song_info *x, struct song_info *y);
-// insert helper
-struct song_info * insert (struct song_info *front, struct song_info *toComp);
 
-// add in alpha order
-struct song_info * insert_song (struct song_info *front, char *a, char *n);
+
+
+
+int songs_equal(struct song_info *a, char *artist, char *name);
+struct song_info * find_node(struct song_info *front, char *artist, char *name);
+struct song_info * find_artist(struct song_info *front, char *artist);
 /*
 
-
-
-
-insert nodes in order
-alphabetical by Artist then by Song
-you should have a helper function to compare song nodes effectively.
 
 find and return a pointer to a node based on artist and song name
 find and return a pointer to the first song of an artist based on artist name

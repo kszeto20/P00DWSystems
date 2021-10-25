@@ -21,10 +21,7 @@ struct song_info * insert_front(struct song_info *first,  char *name, char *arti
 
 int songcmp(struct song_info *x, struct song_info *y) {
   if (strcasecmp(x->artist, y->artist) >= 0) {
-    if (strcasecmp(x->name, y->name) > 0) {
-      // y less than x
-      return 1;
-    }
+    return (strcasecmp(x->name, y->name));
   } else {
     return 0;
   }
@@ -57,7 +54,28 @@ struct song_info * insert (struct song_info *front, struct song_info *toComp) {
 
 struct song_info * insert_song (struct song_info *front, char *a, char *n) {
   struct song_info *toAdd = songCreation(a, n);
-  return insert(front, toAdd);
+  if (front == NULL) {
+    return toAdd;
+  }
+  if (songcmp(front, toAdd)) {
+    toAdd->next = front;
+    return toAdd;
+  }
+  struct song_info *before = front;
+  struct song_info *curr = front->next;
+  while (curr) {
+    if (songcmp(curr, toAdd)) {
+      toAdd->next = curr;
+      before->next = toAdd;
+      return front;
+    }
+    else {
+      curr = curr->next;
+      before = before->next;
+    }
+  }
+  before->next = toAdd;
+  return front;
 }
 
 struct song_info * random_song (struct song_info * toFree) {
@@ -77,6 +95,33 @@ struct song_info * random_song (struct song_info * toFree) {
     toFree = toFree->next;
   }
   return toFree;
+}
+
+// Returns true if node contains given data
+int data_check(struct song_info *a, char *artist, char *name) {
+  if (strcasecmp(a->artist, artist) == 0) {
+    if (strcasecmp(a->name, name) == 0) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+// finds a given node in the list
+struct song_info * find_node(struct song_info *front, char *artist, char *name) {
+    printf("looking for %s by %s\n", name, artist);
+    struct song_info *temp = front;
+    while (temp) {
+        if (data_check(temp, artist, name)) {
+          printf("Song Found: ");
+          print_node(temp);
+          printf("\n");
+          return temp;
+        }
+        else temp = temp->next;
+    }
+    printf("\tsong not found\n");
+    return NULL;
 }
 
 void print_node(struct song_info * p) {
