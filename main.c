@@ -8,11 +8,12 @@ int main () {
 
   char sep[] = "----------------------------\n";
 
-  char name1[] = "Viva La Vida";
-  char artist1[] = "Coldplay";
-  struct song_info *one = songCreation(name1, artist1);
+  char name[] = "DNA.";
+  char artist[] = "Kendrick Lamar";
 
-  printSong(one);
+  struct song_info *one = songCreation(name, artist);
+/*
+  print_node(one);
 
   char name2[] = "In My Feelings";
   char artist2[] = "Drake";
@@ -36,6 +37,28 @@ int main () {
 
   printf("%s", sep);
 
-  struct song_info *left = randoRet(five);
-  printSong(left);
+  struct song_info *left = random_song(five);
+  print_node(left);
+
+  printf("%s", sep);
+*/
+  char name1[] = "Viva La Vida";
+  char artist1[] = "Coldplay";
+
+  char name2[] = "Light It Up";
+  char artist2[] = "Major Lazer";
+
+  char name3[] = "In My Feelings";
+  char artist3[] = "Drake";
+
+  char name4[] = "City of Stars";
+  char artist4[] = "La La Land Cast";
+
+
+  struct song_info *addedIn = insert_song(one, name1, artist1);
+  addedIn = insert_song(addedIn, name2, artist2);
+  addedIn = insert_song(addedIn, name3, artist3);
+  addedIn = insert_song(addedIn, name4, artist4);
+
+  print_list(addedIn);
 }
