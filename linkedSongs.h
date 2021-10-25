@@ -19,7 +19,6 @@ struct song_info * songCreation(char *n, char *a);
 int comp(struct song_info *x, struct song_info *y);
 // insert helper
 struct song_info * insert (struct song_info *front, struct song_info *toComp);
-
 // add in alpha order
 struct song_info * insert_song (struct song_info *front, char *a, char *n);
 
@@ -39,21 +38,11 @@ struct song_info * free_list(struct song_info * toFree);
 struct song_info * random_song (struct song_info * toFree);
 
 // find by artist then name
-struct song_info * findByAN (struct song_info * toFree, char n, char a);
-
-
-
-
-
-int songs_equal(struct song_info *a, char *artist, char *name);
+int data_check(struct song_info *a, char *artist, char *name);
 struct song_info * find_node(struct song_info *front, char *artist, char *name);
+
 struct song_info * find_artist(struct song_info *front, char *artist);
 /*
-
-
-find and return a pointer to a node based on artist and song name
-find and return a pointer to the first song of an artist based on artist name
-
 remove a single specified node from the list
 specified by both artist and song name.
 

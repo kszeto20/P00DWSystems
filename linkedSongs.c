@@ -109,7 +109,7 @@ int data_check(struct song_info *a, char *artist, char *name) {
 
 // finds a given node in the list
 struct song_info * find_node(struct song_info *front, char *artist, char *name) {
-    printf("looking for %s by %s\n", name, artist);
+    printf("Looking for %s by %s\n", name, artist);
     struct song_info *temp = front;
     while (temp) {
         if (data_check(temp, artist, name)) {
@@ -120,8 +120,24 @@ struct song_info * find_node(struct song_info *front, char *artist, char *name) 
         }
         else temp = temp->next;
     }
-    printf("\tsong not found\n");
+    printf("\nsong not found\n");
     return NULL;
+}
+
+struct song_info * find_artist(struct song_info *front, char *artist) {
+  printf("Looking for songs by %s\n", artist);
+  struct song_info *temp = front;
+  while (temp) {
+      if (strcasecmp(temp->artist, artist) == 0) {
+        printf("Artist Found: ");
+        print_node(temp);
+        printf("\n");
+        return temp;
+      }
+      else temp = temp->next;
+  }
+  printf("\nartist not found\n");
+  return NULL;
 }
 
 void print_node(struct song_info * p) {

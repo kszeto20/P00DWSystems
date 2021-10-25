@@ -74,4 +74,10 @@ int main () {
   printf("Testing find node\n");
   struct song_info *nodeFound = find_node(addedIn, "Kendrick Lamar", "DNA");
   print_node(nodeFound);
+
+  printf("%s", sep);
+
+  printf("Testing find node\n");
+  find_artist(addedIn, "Kendrick Lamar");
+
 }
