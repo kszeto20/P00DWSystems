@@ -114,7 +114,6 @@ void shuffle_lib(struct song_node **library) {
         print_song(random_song(library[a]));
         pCount += 1;
       }
-
       num_songs++;
     }
   }
