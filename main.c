@@ -1,4 +1,5 @@
 #include "linkedSongs.h"
+#include "library.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -64,5 +65,61 @@ int main () {
   printf("list after free_list: ");
   print_list(front);
   printf("====================================\n\n");
+
+  printf("LIBRARY LIST TESTS\n====================================\n\n");
+
+  printf("Testing print_letter\n");
+  printf("====================================\n\n");
+
+  struct song_node **library = libraryCreation();
+  printf("Testing print_library\n");
+  print_library(library);
+  printf("====================================\n\n");
+
+  library = add_song(library, "pearl jam", "yellow ledbetter");
+  library = add_song(library, "pearl jam", "alive");
+  library = add_song(library, "presidents of the united states of america", "peaches");
+  library = add_song(library, "ac/dc", "thunderstruck");
+  library = add_song(library, "pearl jam", "even flow");
+  library = add_song(library, "radiohead", "paranoid android");
+  library = add_song(library, "radiohead", "stree spirit (fade out)");
+  library = add_song(library, "pink floyd", "time");
+
+  printf("Testing print_letter: \n");
+  print_letter(library, 'p');
+  printf("====================================\n\n");
+
+  printf("Testing print_library \n");
+  print_library(library);
+  printf("====================================\n\n");
+
+  printf("Testing finding songs in library: \n");
+  find_song_lib(library, "pearl jam", "alive");
+  find_song_lib(library, "pearl jam", "time");
+  printf("====================================\n\n");
+
+  printf("Testing finding artists in library: \n");
+  find_artist_lib(library, "pearl jam");
+  find_artist_lib(library, "pink floyd");
+  find_artist_lib(library, "playboi carti");
+  printf("====================================\n\n");
+
+  printf("Testing print artist: \n");
+  print_artist_lib(library, "pearl jam");
+  print_artist_lib(library, "ac/dc");
+  printf("====================================\n\n");
+
+  printf("Testing remove song: \n");
+  library = remove_song_lib(library, "pearl jam", "alive");
+  print_library(library);
+  library = remove_song_lib(library, "pearl jam", "yellow ledbetter");
+  print_library(library);
+  printf("====================================\n\n");
+
+  printf("Testing shuffle: \n");
+    shuffle_lib(library);
+    printf("\n");
+    printf("====================================\n\n");
+
   return 0;
 }

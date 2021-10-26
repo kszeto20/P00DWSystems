@@ -34,8 +34,8 @@ struct song_node * find_artist(struct song_node *front, char *artist); // done
 
 struct song_node * random_song(struct song_node *toFree); // done
 
-struct song_node * free_list(struct song_node *front);
+struct song_node * free_list(struct song_node *front); // done
 
-struct song_node * remove_song(struct song_node *front, char *artist, char *name);
+struct song_node * remove_song(struct song_node *front, char *artist, char *name); // done
 
 #endif
