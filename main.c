@@ -117,9 +117,15 @@ int main () {
   printf("====================================\n\n");
 
   printf("Testing shuffle: \n");
-    shuffle_lib(library);
-    printf("\n");
-    printf("====================================\n\n");
+  shuffle_lib(library);
+  printf("\n");
+  printf("====================================\n\n");
+
+  printf("Testing free library: \n");
+  library = free_library(library);
+  printf("Printing library: \n");
+  print_library(library);
+
 
   return 0;
 }

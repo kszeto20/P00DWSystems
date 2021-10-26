@@ -100,6 +100,7 @@ void shuffle_lib(struct song_node **library) {
   int a = 27;
 
   int num_songs = 0;
+  int pCount = 0;
 
   while (num_songs < 3) {
     for (i = 0; i < 27; i++) {
@@ -109,9 +110,20 @@ void shuffle_lib(struct song_node **library) {
       if (listLen(library[a]) == 0) {
         continue;
       }
+      if (pCount < 3) {
+        print_song(random_song(library[a]));
+        pCount += 1;
+      }
 
-      print_song(random_song(library[a]));
       num_songs++;
     }
   }
+}
+
+struct song_node ** free_library(struct song_node **library) {
+    int counter;
+    for (counter = 0; counter < 27; counter++) {
+        library[counter] = free_list(library[counter]);
+    }
+    return library;
 }

@@ -15,6 +15,7 @@ struct song_node * find_artist_lib(struct song_node ** library, char *artist); /
 void print_artist_lib (struct song_node ** library, char * artists); // done
 struct songs ** remove_song_lib(struct song_node ** library, char *artist, char *name); // done
 void shuffle_lib(struct song_node **library);
+struct song_node ** free_library(struct song_node **library);
 
 /*
 
