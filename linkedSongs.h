@@ -1,53 +1,41 @@
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include <stdlib.h>
+#ifndef MY_LISTS
+#define MY_LISTS "linkedSongs"
 
-struct song_info {
-  char name[100];
-  char artist[100];
-  struct song_info *next;
+#include<stdlib.h>
+#include<stdio.h>
+#include<time.h>
+#include<string.h>
+
+struct song_node {
+    char *name;
+    char *artist;
+    struct song_node *next;
 };
 
-//insert nodes at the front (done)
-struct song_info * insert_front(struct song_info *first,  char *name, char *artist);
+void print_song(struct song_node *node); //done
 
-// make nodes
-struct song_info * songCreation(char *n, char *a);
+void print_list(struct song_node *front); //done
 
-// compare two songs
-int comp(struct song_info *x, struct song_info *y);
-// insert helper
-struct song_info * insert (struct song_info *front, struct song_info *toComp);
-// add in alpha order
-struct song_info * insert_song (struct song_info *front, char *a, char *n);
+struct song_node * songCreation(char *name, char *artist); // done
 
-// print the entire list (done)
-void print_list(struct song_info *first);
+int songCmp(struct song_node *a, struct song_node *b); // done
 
-// print member (by search to be implmented)
-void print_node(struct song_info * p);
+struct song_node * insert(struct song_node *front, struct song_node *node); //done
 
-// free member (by search to be implemented)
-struct song_info * remove_node(struct song_info *front, int data);
+struct song_node * insert_song(struct song_node *front, char *name, char *artist); // done
 
-// free the entire list
-struct song_info * free_list(struct song_info * toFree);
+struct song_node * insert_front(struct song_node *front, char *name, char *artist); // done
 
-// Return a pointer to random element in the list (done)
-struct song_info * random_song (struct song_info * toFree);
+int data_check(struct song_node *a, char *name, char *artist);
 
-// find by artist then name
-int data_check(struct song_info *a, char *name, char *artist);
-struct song_info * find_node(struct song_info *front, char *name, char *artist);
+struct song_node * find_node(struct song_node *front, char *artist, char *name); // done
 
-struct song_info * find_artist(struct song_info *front, char *artist);
+struct song_node * find_artist(struct song_node *front, char *artist); // done
 
-struct song_info * remove_song(struct song_info *front, char *name, char *artist);
+struct song_node * random_song(struct song_node *toFree); // done
 
+struct song_node * free_list(struct song_node *front);
 
-/*
-remove a single specified node from the list
-specified by both artist and song name.
+struct song_node * remove_song(struct song_node *front, char *artist, char *name);
 
-*/
+#endif

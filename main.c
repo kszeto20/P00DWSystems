@@ -1,92 +1,68 @@
 #include "linkedSongs.h"
-#include "library.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-
 int main () {
-  printf("Good News Everyone\n");
+  printf("LINKED LIST TESTS\n====================================\n\n");
 
-  char sep[] = "----------------------------\n";
-  printf("%s", sep);
+  struct song_node *front = NULL;
+  front = insert_song(front, "ac/dc", "thunderstruck");
+  front = insert_song(front, "pink floyd", "time");
+  front = insert_song(front, "pearl jam", "even flow");
+  front = insert_song(front, "pearl jam", "yellow ledbetter");
+  front = insert_song(front, "pearl jam", "alive");
+  front = insert_song(front, "radiohead", "street spirit (fade out)");
+  front = insert_song(front, "radiohead", "paranoid android");
 
-  printf("Testing Print Node Printing:\n");
-  char name[] = "DNA";
-  char artist[] = "Kendrick Lamar";
+  printf("Testing print_list\n");
+  print_list(front);
+  printf("\n====================================\n\n");
 
-  struct song_info *one = songCreation(name, artist);
-  print_node(one);
-  printf("%s", sep);
+  printf("Testing print_song:\n");
+  print_song(front);
+  printf("\n====================================\n\n");
 
-  //////////////////////
+  printf("Testing insert front: \n");
+  front = insert_song(front, "the rolling stones", "paint it black");
+  print_list(front);
+  printf("====================================\n\n");
 
-  printf("Testing Print List:\n");
-  char name2[] = "In My Feelings";
-  char artist2[] = "Drake";
-  struct song_info *two = insert_front(one, name2, artist2);
+  printf("Testing insert front: \n");
+  front = insert_front(front, "the rolling stones", "paint it black");
+  print_list(front);
+  printf("====================================\n\n");
 
-  char name3[] = "City of Stars";
-  char artist3[] = "La La Land Cast";
-  struct song_info *three = insert_front(two, name3, artist3);
+  printf("Testing find node: \n");
+  find_node(front, "pearl jam", "even flow");
+  find_node(front, "mura masa", "love$ick");
+  printf("====================================\n\n");
 
-  char name4[] = "Light it Up";
-  char artist4[] = "Major Lazer";
-  struct song_info *four = insert_front(three, name4, artist4);
+  printf("Testing find artist: \n");
+  find_artist(front, "pearl jam");
+  find_artist(front, "playboi carti");
+  printf("====================================\n\n");
 
-  char name5[] = "DNA.";
-  char artist5[] = "Kendrick Lamar";
-  struct song_info *five = insert_front(four, name5, artist5);
-  print_list(five);
+  printf("Testing random:\n");
+  print_song(random_song(front));
+  printf("\n");
 
-  printf("%s", sep);
+  print_song(random_song(front));
+  printf("\n");
 
-  printf("Testing Random Node Generator\n");
-  struct song_info *left = random_song(five);
-  print_node(left);
+  printf("====================================\n\n");
+  printf("Testing remove:\n");
+  front = remove_song(front, "pearl jam", "alive");
+  print_list(front);
+  front = remove_song(front, "pearl jam", "yellow ledbetter");
+  print_list(front);
+  front = remove_song(front, "pink floyd", "alive");
+  print_list(front);
+  printf("====================================\n\n");
 
-  printf("%s", sep);
-
-
-  char tname1[] = "Viva La Vida";
-  char tartist1[] = "Coldplay";
-
-  char tname2[] = "Light It Up";
-  char tartist2[] = "Major Lazer";
-
-  char tname3[] = "In My Feelings";
-  char tartist3[] = "Drake";
-
-  char tname4[] = "City of Stars";
-  char tartist4[] = "La La Land Cast";
-
-  char tname5[] = "Marvin's Room";
-  char tartist5[] = "Drake";
-
-
-  struct song_info *addedIn = insert_song(one, tname1, tartist1);
-  addedIn = insert_song(addedIn, tname2, tartist2);
-  addedIn = insert_song(addedIn, tname3, tartist3);
-  addedIn = insert_song(addedIn, tname4, tartist4);
-  addedIn = insert_song(addedIn, tname5, tartist5);
-  print_list(addedIn);
-
-  printf("%s", sep);
-
-  //print_list(addedIn);
-  printf("Testing find node\n");
-  struct song_info *nodeFound = find_node(addedIn, "DNA", "Kendrick Lamar");
-
-  printf("%s", sep);
-
-  printf("Testing find artist\n");
-  find_artist(addedIn, "Kendrick Lamar");
-  printf("%s", sep);
-
-  printf("Testing removing song\n");
-  addedIn = remove_song(addedIn, "DNA", "Kendrick Lamar");
-  printf("\n%sFinal List\n", sep);
-  print_list(addedIn);
-/////////////////////
-
+  printf("Testing free_list:\n");
+  front = free_list(front);
+  printf("list after free_list: ");
+  print_list(front);
+  printf("====================================\n\n");
   return 0;
 }
